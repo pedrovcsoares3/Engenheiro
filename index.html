@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engenheiro Civil | Projetos Seguros e Inteligentes</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuration & Custom CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Open Sans', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        eng: {
+                            navy: '#0B2447',     /* Azul Marinho Escuro */
+                            blue: '#19376D',     /* Azul Profissional */
+                            orange: '#F97B22',   /* Laranja Construção */
+                            orangeHover: '#E86A11',
+                            light: '#F8F9FA',
+                            dark: '#1A1A1A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Efeito Pulse Contínuo para WhatsApp */
+        @keyframes pulse-wpp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); transform: scale(1); }
+            50% { transform: scale(1.05); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); transform: scale(1); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); transform: scale(1); }
+        }
+        .wpp-floating {
+            animation: pulse-wpp 2s infinite;
+            background-color: #25D366;
+        }
+        .wpp-floating:hover {
+            background-color: #128C7E;
+        }
+
+        /* Efeito Hover nos Cards de Serviço */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-bottom: 4px solid #F97B22;
+        }
+        
+        /* Ajuste para o offset do sticky header nas âncoras */
+        section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 antialiased selection:bg-eng-orange selection:text-white">
+
+    <header id="header" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-heading font-extrabold text-2xl text-eng-navy tracking-tighter">
+                        ENG<span class="text-eng-orange">.</span> PRO
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#obras" class="text-gray-600 hover:text-eng-orange font-medium transition-colors">Portfólio</a>
+                    <a href="#prejuizos" class="text-gray-600 hover:text-eng-orange font-medium transition-colors">Por que contratar?</a>
+                    <a href="#servicos" class="text-gray-600 hover:text-eng-orange font-medium transition-colors">Serviços</a>
+                    <a href="#contato" class="text-gray-600 hover:text-eng-orange font-medium transition-colors">Contato</a>
+                    <a href="#contato" class="bg-eng-orange text-white px-6 py-2.5 rounded-md font-semibold hover:bg-eng-orangeHover transition-colors shadow-lg shadow-eng-orange/30">
+                        Fale com o Engenheiro
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-eng-navy focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-1 shadow-inner">
+                <a href="#obras" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-eng-orange hover:bg-gray-50 rounded-md">Portfólio</a>
+                <a href="#prejuizos" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-eng-orange hover:bg-gray-50 rounded-md">Por que contratar?</a>
+                <a href="#servicos" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-eng-orange hover:bg-gray-50 rounded-md">Serviços</a>
+                <a href="#contato" class="block px-3 py-3 text-base font-medium text-eng-orange font-bold hover:bg-gray-50 rounded-md">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-32 lg:pt-32 lg:pb-48 flex items-center min-h-[90vh]">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1541888082470-fa37397b9199?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Engenheiro analisando projeto na obra" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-eng-navy via-eng-navy/90 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-2xl">
+                <div class="inline-block px-4 py-1.5 mb-6 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
+                    <span class="text-eng-orange font-semibold text-sm tracking-wider uppercase">Engenharia de Alta Performance</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-tight mb-6">
+                    Economia e Segurança estrutural para a sua obra.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
+                    Evite embargos, rachaduras e desperdício de material. Tenha um projeto inteligente elaborado por um especialista focado no melhor custo-benefício para o seu investimento.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contato" class="inline-flex justify-center items-center px-8 py-4 bg-eng-orange text-white font-bold rounded-md hover:bg-eng-orangeHover transition-all shadow-[0_0_20px_rgba(249,123,34,0.4)] text-lg">
+                        Solicitar Orçamento Gratuito
+                    </a>
+                    <a href="#obras" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white hover:text-eng-navy transition-all text-lg">
+                        Ver Portfólio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Barra de Estatísticas (Counters) -->
+    <div class="relative z-20 -mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-2xl p-8 grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+            <div class="text-center pt-4 md:pt-0">
+                <div class="flex items-center justify-center text-4xl lg:text-5xl font-heading font-bold text-eng-navy mb-2">
+                    +<span id="count-exp" class="counter" data-target="15">0</span>
+                </div>
+                <p class="text-gray-500 font-medium uppercase tracking-wide text-sm">Anos de Experiência</p>
+            </div>
+            <div class="text-center pt-4 md:pt-0">
+                <div class="flex items-center justify-center text-4xl lg:text-5xl font-heading font-bold text-eng-orange mb-2">
+                    +<span id="count-proj" class="counter" data-target="350">0</span>
+                </div>
+                <p class="text-gray-500 font-medium uppercase tracking-wide text-sm">Projetos Entregues</p>
+            </div>
+            <div class="text-center pt-4 md:pt-0">
+                <div class="flex items-center justify-center text-4xl lg:text-5xl font-heading font-bold text-eng-navy mb-2">
+                    <span id="count-cli" class="counter" data-target="100">0</span>%
+                </div>
+                <p class="text-gray-500 font-medium uppercase tracking-wide text-sm">Aprovação Legal</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <section id="obras" class="py-24 bg-eng-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-eng-orange font-bold tracking-wider uppercase text-sm mb-2">Obras Concluídas</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-eng-navy mb-4">Excelência materializada em cada detalhe</h3>
+                <p class="text-gray-600 text-lg">Confira alguns dos nossos projetos executados, desde residências de alto padrão a edifícios comerciais e condomínios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Obra 1: Casa Alto Padrão -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg bg-white">
+                    <div class="aspect-w-16 aspect-h-12 w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Residência de Alto Padrão" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-eng-navy/90 via-eng-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-heading font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Residência Alpha</h4>
+                        <p class="text-gray-200 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Projetos Estrutural e Arquitetônico • Alto Padrão</p>
+                    </div>
+                </div>
+
+                <!-- Obra 2: Prédio/Condomínio -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg bg-white">
+                    <div class="aspect-w-16 aspect-h-12 w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Edifício Residencial" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-eng-navy/90 via-eng-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-heading font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Edifício Skyline</h4>
+                        <p class="text-gray-200 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Projetos Completos • Múltiplos Pavimentos</p>
+                    </div>
+                </div>
+
+                <!-- Obra 3: Casa Médio Padrão / Moderna -->
+                <div class="group relative overflow-hidden rounded-xl shadow-lg bg-white">
+                    <div class="aspect-w-16 aspect-h-12 w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casa Moderna" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-eng-navy/90 via-eng-navy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-heading font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Villa Contemporânea</h4>
+                        <p class="text-gray-200 text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Projeto Hidrossanitário e Elétrico</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#contato" class="inline-flex items-center text-eng-blue font-bold hover:text-eng-orange transition-colors">
+                    Quero um projeto com esse nível de qualidade <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loss Aversion Section -->
+    <section id="prejuizos" class="py-24 bg-eng-navy text-white relative overflow-hidden">
+        <!-- Decorator -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 opacity-10">
+            <i class="fas fa-hard-hat text-[300px]"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">O barato que custa o seu patrimônio.</h2>
+                <p class="text-xl text-gray-300">Construir sem o acompanhamento de um engenheiro qualificado e projetos adequados não é economia, é um risco iminente.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Risco 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                    <div class="w-14 h-14 bg-red-500/20 text-red-500 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading mb-3">Obras Embargadas</h4>
+                    <p class="text-gray-400">Iniciar a construção sem aprovação legal resulta em multas altíssimas da prefeitura e paralisação total da obra por tempo indeterminado.</p>
+                </div>
+
+                <!-- Risco 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                    <div class="w-14 h-14 bg-eng-orange/20 text-eng-orange rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-house-crack"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading mb-3">Trincas e Desabamentos</h4>
+                    <p class="text-gray-400">Sem cálculo estrutural preciso, o peso mal distribuído gera fissuras, infiltrações graves e até o risco de colapso de toda a estrutura.</p>
+                </div>
+
+                <!-- Risco 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
+                    <div class="w-14 h-14 bg-yellow-500/20 text-yellow-500 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fas fa-money-bill-trend-down"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading mb-3">Desperdício de Material</h4>
+                    <p class="text-gray-400">Comprar ferro e cimento "no olhômetro" faz você gastar até 30% a mais do que o necessário, estourando completamente seu orçamento inicial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-eng-orange font-bold tracking-wider uppercase text-sm mb-2">Nossas Especialidades</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-eng-navy mb-4">Projetos completos para a sua obra</h3>
+                <p class="text-gray-600 text-lg">Desenvolvemos todas as disciplinas necessárias para garantir que a execução ocorra sem imprevistos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col">
+                    <i class="fas fa-layer-group text-4xl text-eng-blue mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading text-eng-navy mb-3">Projeto Estrutural</h4>
+                    <p class="text-gray-600 flex-grow">Dimensionamento rigoroso de vigas, pilares e fundações. Otimizamos o consumo de aço e concreto para máxima segurança com menor custo.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col">
+                    <i class="fas fa-pencil-ruler text-4xl text-eng-blue mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading text-eng-navy mb-3">Projeto Arquitetônico</h4>
+                    <p class="text-gray-600 flex-grow">Concepção de fachadas e distribuição de ambientes focada em iluminação natural, ventilação e funcionalidade estética.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col">
+                    <i class="fas fa-bolt text-4xl text-eng-blue mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading text-eng-navy mb-3">Projeto Elétrico</h4>
+                    <p class="text-gray-600 flex-grow">Planejamento de quadros de carga, tomadas e iluminação. Evite curtos-circuitos, quedas de energia e queima de aparelhos.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col">
+                    <i class="fas fa-faucet-drip text-4xl text-eng-blue mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading text-eng-navy mb-3">Projeto Hidrossanitário</h4>
+                    <p class="text-gray-600 flex-grow">Sistema de água fria/quente e esgoto perfeitamente dimensionados, prevenindo mau cheiro, entupimentos e falta de pressão.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card bg-gray-50 rounded-xl p-8 border border-gray-100 flex flex-col">
+                    <i class="fas fa-fire-extinguisher text-4xl text-eng-blue mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading text-eng-navy mb-3">Combate a Incêndio</h4>
+                    <p class="text-gray-600 flex-grow">Projeto de Prevenção e Combate a Incêndio (PPCI) obrigatório para condomínios e comércio, aprovado rigorosamente nos Bombeiros.</p>
+                </div>
+
+                <!-- Card 6: Aprovação -->
+                <div class="service-card bg-eng-navy rounded-xl p-8 border border-eng-navy flex flex-col text-white">
+                    <i class="fas fa-stamp text-4xl text-eng-orange mb-6"></i>
+                    <h4 class="text-xl font-bold font-heading mb-3">Aprovação na Prefeitura</h4>
+                    <p class="text-gray-300 flex-grow">Cuidamos de toda a burocracia, taxas, habite-se e regularização da sua obra para que você não perca tempo em filas.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contato" class="py-24 bg-eng-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    
+                    <!-- Formulário -->
+                    <div class="p-10 md:p-12">
+                        <h3 class="text-3xl font-heading font-bold text-eng-navy mb-2">Solicite um orçamento</h3>
+                        <p class="text-gray-600 mb-8">Preencha os dados abaixo e retornaremos em até 24h úteis.</p>
+                        
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                                <input type="text" id="nome" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-eng-blue focus:ring-2 focus:ring-eng-blue/20 outline-none transition-all" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">WhatsApp</label>
+                                <input type="tel" id="whatsapp" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-eng-blue focus:ring-2 focus:ring-eng-blue/20 outline-none transition-all" placeholder="(00) 00000-0000">
+                            </div>
+                            <div>
+                                <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-1">Detalhes do Projeto</label>
+                                <textarea id="mensagem" rows="4" required class="w-full px-4 py-3 rounded-md border border-gray-300 focus:border-eng-blue focus:ring-2 focus:ring-eng-blue/20 outline-none transition-all resize-none" placeholder="Conte-nos um pouco sobre a sua obra..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-eng-navy text-white font-bold py-4 rounded-md hover:bg-eng-blue transition-colors flex justify-center items-center">
+                                Enviar Solicitação <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                            <p id="form-feedback" class="hidden text-green-600 font-medium text-center mt-4">Mensagem enviada com sucesso! Em breve entraremos em contato.</p>
+                        </form>
+                    </div>
+
+                    <!-- Informações e Dados -->
+                    <div class="bg-eng-navy text-white p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
+                        <!-- BG pattern -->
+                        <div class="absolute inset-0 opacity-5 pointer-events-none">
+                            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grid)" />
+                            </svg>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <h3 class="text-2xl font-heading font-bold mb-8">Informações de Contato</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fas fa-map-marker-alt text-eng-orange text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-1">Escritório</h5>
+                                        <p class="text-gray-300">Centro, Cabo Frio - RJ<br>Atendimento com hora marcada.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fab fa-whatsapp text-eng-orange text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-1">WhatsApp</h5>
+                                        <a href="#" class="text-gray-300 hover:text-white transition-colors">(22) 99999-9999</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fas fa-envelope text-eng-orange text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-lg mb-1">E-mail</h5>
+                                        <a href="mailto:contato@engpro.com.br" class="text-gray-300 hover:text-white transition-colors">contato@engpro.com.br</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative z-10 mt-12 pt-8 border-t border-white/20">
+                            <div class="flex items-center">
+                                <i class="fas fa-id-card text-3xl text-eng-orange mr-4"></i>
+                                <div>
+                                    <p class="font-bold text-sm uppercase tracking-wider">Registro Profissional</p>
+                                    <p class="text-gray-300">CREA-RJ: 202312345/D</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Full Width -->
+    <section class="w-full h-96 bg-gray-200">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14713.882772583274!2d-42.028945!3d-22.877546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x971ab7a944fc99%3A0xb308a0dfdbec10f0!2sCentro%2C%20Cabo%20Frio%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-eng-dark py-8 text-center border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-heading font-extrabold text-2xl text-white tracking-tighter mb-4">
+                ENG<span class="text-eng-orange">.</span> PRO
+            </h2>
+            <p class="text-gray-400 text-sm mb-2">&copy; 2026 ENG. PRO Engenharia Civil. Todos os direitos reservados.</p>
+            <p class="text-gray-500 text-xs">Desenvolvido com foco em conversão e segurança estrutural.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5522999999999?text=Olá,%20acessei%20o%20site%20e%20gostaria%20de%20um%20orçamento%20para%20meu%20projeto." target="_blank" rel="noopener noreferrer" 
+       class="wpp-floating fixed bottom-6 right-6 z-50 text-white rounded-full w-16 h-16 flex items-center justify-center text-3xl shadow-lg transition-transform hover:scale-110" aria-label="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Fechar menu ao clicar num link (mobile)
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Lógica do Header Sticky com sombra ao rolar
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+                header.classList.remove('py-2');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('py-2');
+            }
+        });
+
+        // Lógica dos Contadores Animados (Count up effect)
+        const counters = document.querySelectorAll('.counter');
+        let hasAnimated = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000; // 2 segundos
+                const increment = target / (duration / 16); // 60fps aprox
+
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        };
+
+        // Usa IntersectionObserver para disparar animação apenas quando os números aparecem na tela
+        const statsSection = document.getElementById('count-exp').parentElement.parentElement.parentElement;
+        
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasAnimated) {
+                animateCounters();
+                hasAnimated = true;
+            }
+        }, { threshold: 0.5 });
+
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+
+        // Lógica simples de submissão do formulário para evitar recarregamento e alert
+        const form = document.getElementById('contact-form');
+        const feedback = document.getElementById('form-feedback');
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Impede o envio real para demonstração
+            const btnSubmit = form.querySelector('button[type="submit"]');
+            
+            // Simula estado de carregamento
+            const originalText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btnSubmit.disabled = true;
+            btnSubmit.classList.add('opacity-75');
+
+            setTimeout(() => {
+                // Sucesso
+                btnSubmit.innerHTML = originalText;
+                btnSubmit.disabled = false;
+                btnSubmit.classList.remove('opacity-75');
+                form.reset(); // Limpa form
+                feedback.classList.remove('hidden'); // Mostra msg sucesso
+                
+                // Esconde a msg após 5 segundos
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
