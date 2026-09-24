@@ -71,7 +71,7 @@
         }
     </style>
 </head>
-<body class="font-sans text-gray-700 bg-gray-50 antialiased selection:bg-eng-orange selection:text-white">
+<body class="font-sans text-gray-700 bg-gray-50 antialiased selection:bg-eng-orange selection:text-white overflow-x-hidden">
 
     <header id="header" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -321,7 +321,7 @@
         </div>
     </section>
 
-    <!-- Donos da Empresa --!>
+    <!-- Donos da Empresa -->
     <section id="sobre" class="py-24 bg-brand-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Fotos e Nomes -->
@@ -342,8 +342,10 @@
                     <h3 class="font-heading font-bold text-2xl text-brand-navy">Engenheiro</h3>
                 </div>
             </div>
+        </div> <!-- FECHAMENTO CORRIGIDO AQUI -->
+    </section> <!-- FECHAMENTO CORRIGIDO AQUI -->
 
-    <!-- Contact & Map Section -->
+    <!-- Contact Section -->
     <section id="contato" class="py-24 bg-eng-light">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -440,11 +442,10 @@
     </section>
 
     <!-- Google Maps Full Width -->
-    <section class="w-full h-96 bg-gray-200">
+    <section class="w-screen h-96 bg-gray-200 m-0 p-0">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14713.882772583274!2d-42.028945!3d-22.877546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x971ab7a944fc99%3A0xb308a0dfdbec10f0!2sCentro%2C%20Cabo%20Frio%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
-            width="100%" 
-            height="100%" 
+            class="w-full h-full"
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
@@ -453,7 +454,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-eng-dark py-8 text-center border-t border-gray-800">
+    <footer class="w-screen bg-eng-dark py-8 text-center border-t border-gray-800 m-0">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="font-heading font-extrabold text-2xl text-white tracking-tighter mb-4">
                 ENG<span class="text-eng-orange">.</span> PRO
